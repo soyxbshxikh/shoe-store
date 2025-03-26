@@ -1,24 +1,28 @@
 'use client';
 
-import { useState } from 'react';
-
 interface ProductOptionsProps {
   sizes?: number[];
   colors?: string[];
-  onSizeSelect: (size: number) => void;
-  onColorSelect?: (color: string) => void;
+  onSizeChange: (size: number) => void;
+  onColorChange?: (color: string) => void;
   selectedSize?: number;
 }
 
 export default function ProductOptions({ 
   sizes = [], 
   colors = [],
-  onSizeSelect,
-  onColorSelect,
+  onSizeChange,
+  onColorChange,
   selectedSize
 }: ProductOptionsProps) {
   const handleSizeSelect = (size: number) => {
-    onSizeSelect(size);
+    onSizeChange(size);
+  };
+
+  const handleColorSelect = (color: string) => {
+    if (onColorChange) {
+      onColorChange(color);
+    }
   };
 
   return (
@@ -56,6 +60,7 @@ export default function ProductOptions({
                 className={`relative h-8 w-8 rounded-full border border-gray-300`}
                 style={{ backgroundColor: color.toLowerCase() }}
                 aria-label={`Color: ${color}`}
+                onClick={() => handleColorSelect(color)}
               />
             ))}
           </div>
