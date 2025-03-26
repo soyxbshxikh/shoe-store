@@ -13,6 +13,14 @@ module.exports = {
           hover: '#333333',
         },
       },
+      screens: {
+        'xs': '480px',    // Small smartphones
+        'sm': '640px',    // Larger smartphones
+        'md': '768px',    // Tablets
+        'lg': '1024px',   // Small laptops
+        'xl': '1280px',   // Laptops and desktops
+        '2xl': '1536px',  // Large desktop screens
+      },
     },
   },
   plugins: [],

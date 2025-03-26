@@ -20,7 +20,7 @@ export default function ProductDetailActions({ product }: ProductDetailActionsPr
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Product Options (Sizes only) */}
       <ProductOptions
         sizes={product.sizes}
@@ -29,13 +29,17 @@ export default function ProductDetailActions({ product }: ProductDetailActionsPr
       />
       
       {/* Action Buttons */}
-      <div className="mt-8 flex flex-col sm:flex-row gap-4">
-        <AddToCartButton 
-          product={product} 
-          selectedColor={selectedColor}
-          selectedSize={selectedSize}
-        />
-        <AddToWishlistButton product={product} />
+      <div className="mt-4 sm:mt-6 md:mt-8 flex flex-col xs:flex-row gap-2 xs:gap-3 sm:gap-4">
+        <div className="flex-grow">
+          <AddToCartButton 
+            product={product} 
+            selectedColor={selectedColor}
+            selectedSize={selectedSize}
+          />
+        </div>
+        <div className="mt-2 xs:mt-0">
+          <AddToWishlistButton product={product} />
+        </div>
       </div>
     </div>
   );

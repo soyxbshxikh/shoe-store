@@ -92,53 +92,53 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   const productImages = getProductImageSlides(product.id, product.imagePath);
   
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-4">
-        <nav className="flex text-sm">
+    <div className="container mx-auto px-4 py-4 sm:py-6 md:py-8">
+      <div className="mb-2 sm:mb-4">
+        <nav className="flex text-xs sm:text-sm">
           <ol className="inline-flex items-center space-x-1 md:space-x-2">
             <li className="inline-flex items-center">
               <a href="/" className="text-gray-500 hover:text-gray-900">Home</a>
             </li>
             <li>
               <div className="flex items-center">
-                <span className="mx-2 text-gray-400">/</span>
+                <span className="mx-1 sm:mx-2 text-gray-400">/</span>
                 <a href="/products" className="text-gray-500 hover:text-gray-900">Products</a>
               </div>
             </li>
             <li aria-current="page">
               <div className="flex items-center">
-                <span className="mx-2 text-gray-400">/</span>
-                <span className="text-gray-800">{product.name}</span>
+                <span className="mx-1 sm:mx-2 text-gray-400">/</span>
+                <span className="text-gray-800 truncate max-w-[150px] sm:max-w-[300px]">{product.name}</span>
               </div>
             </li>
           </ol>
         </nav>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
         {/* Product Images */}
         <div>
           <ProductImages slides={productImages} productName={product.name} />
         </div>
         
         {/* Product Details */}
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col space-y-4 sm:space-y-6">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
-            <p className="mt-1 text-xl font-semibold text-indigo-600">₹{product.price}</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{product.name}</h1>
+            <p className="mt-1 text-lg sm:text-xl font-semibold text-indigo-600">₹{product.price}</p>
           </div>
           
           {/* Category tag */}
-          <div className="mt-2">
-            <span className="inline-block rounded-full bg-indigo-100 px-3 py-1 text-sm font-medium text-indigo-800">
+          <div className="mt-1 sm:mt-2">
+            <span className="inline-block rounded-full bg-indigo-100 px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium text-indigo-800">
               {product.category}
             </span>
             {product.inStock ? (
-              <span className="ml-2 inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
+              <span className="ml-2 inline-block rounded-full bg-green-100 px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium text-green-800">
                 In Stock
               </span>
             ) : (
-              <span className="ml-2 inline-block rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-800">
+              <span className="ml-2 inline-block rounded-full bg-red-100 px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium text-red-800">
                 Out of Stock
               </span>
             )}
@@ -146,8 +146,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           
           {/* Description */}
           <div>
-            <h2 className="text-lg font-medium text-gray-900">Description</h2>
-            <p className="mt-2 text-base text-gray-700">{product.description}</p>
+            <h2 className="text-base sm:text-lg font-medium text-gray-900">Description</h2>
+            <p className="mt-1 sm:mt-2 text-sm sm:text-base text-gray-700">{product.description}</p>
           </div>
           
           {/* Product options and actions */}

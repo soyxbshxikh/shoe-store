@@ -75,13 +75,13 @@ export default function ProductImages({ slides, productName }: ProductImagesProp
   };
 
   return (
-    <div className="flex flex-col md:flex-row bg-gray-50 rounded-lg p-2 md:p-4">
-      {/* Thumbnail sidebar */}
-      <div className="flex flex-row md:flex-col gap-3 p-3 md:mr-4 mb-2 md:mb-0 md:w-28">
+    <div className="flex flex-col md:flex-row bg-gray-50 rounded-lg p-1 xs:p-2 md:p-4">
+      {/* Thumbnail sidebar - horizontal on mobile, vertical on desktop */}
+      <div className="flex flex-row md:flex-col gap-2 xs:gap-3 p-2 xs:p-3 md:mr-4 mb-2 md:mb-0 overflow-x-auto md:overflow-x-visible md:w-20 lg:w-24 xl:w-28">
         {currentImages.map((image, index) => (
           <div 
             key={`${image}-${index}`} 
-            className={`relative h-24 w-24 cursor-pointer overflow-hidden rounded-md border-2 ${
+            className={`relative flex-shrink-0 h-16 w-16 xs:h-20 xs:w-20 sm:h-24 sm:w-24 cursor-pointer overflow-hidden rounded-md border-2 ${
               activeImage === index ? 'border-black' : 'border-gray-200'
             } hover:border-gray-400 transition-all duration-200`}
             onMouseEnter={() => setActiveImage(index)}

@@ -52,7 +52,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="group relative rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md">
       <Link href={`/products/${product.id}`} className="block h-full w-full">
-        <div className="relative h-64 w-full overflow-hidden rounded-t-lg">
+        <div className="relative h-48 xs:h-56 sm:h-60 md:h-64 w-full overflow-hidden rounded-t-lg">
           <Image
             src={imageError ? getFallbackImage() : getImagePath()}
             alt={product.name}
@@ -62,15 +62,15 @@ export default function ProductCard({ product }: ProductCardProps) {
             onError={() => setImageError(true)}
           />
         </div>
-        <div className="p-4">
-          <h3 className="mb-1 text-lg font-medium text-gray-900">{product.name}</h3>
-          <p className="mb-2 text-xl font-bold text-indigo-600">₹{product.price}</p>
-          <div className="mt-4">
-            <span className="inline-block rounded-full bg-indigo-100 px-3 py-1 text-sm font-medium text-indigo-800">
+        <div className="p-3 sm:p-4">
+          <h3 className="mb-1 text-base sm:text-lg font-medium text-gray-900 line-clamp-1">{product.name}</h3>
+          <p className="mb-2 text-lg sm:text-xl font-bold text-indigo-600">₹{product.price}</p>
+          <div className="mt-2 sm:mt-4">
+            <span className="inline-block rounded-full bg-indigo-100 px-2 py-1 text-xs sm:text-sm font-medium text-indigo-800">
               {product.category}
             </span>
           </div>
-          <button className="mt-4 w-full rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700">
+          <button className="mt-3 sm:mt-4 w-full rounded-md bg-indigo-600 px-3 py-1.5 sm:px-4 sm:py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700">
             View Details
           </button>
         </div>

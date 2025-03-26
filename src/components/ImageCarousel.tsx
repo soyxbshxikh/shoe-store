@@ -58,7 +58,7 @@ export default function ImageCarousel({ images }: CarouselProps) {
   }, [goToNext, isTransitioning]);
 
   return (
-    <div className="relative w-full h-[80vh] overflow-hidden">
+    <div className="relative w-full h-[40vh] xs:h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
       {/* Images */}
       {carouselImages.map((image, index) => (
         <div
@@ -86,31 +86,31 @@ export default function ImageCarousel({ images }: CarouselProps) {
       {/* Navigation arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute left-6 top-1/2 z-20 -translate-y-1/2 bg-white/80 p-3 hover:bg-white focus:outline-none transition-all duration-300"
+        className="absolute left-2 xs:left-4 sm:left-6 top-1/2 z-20 -translate-y-1/2 bg-white/80 p-2 sm:p-3 hover:bg-white focus:outline-none transition-all duration-300"
         aria-label="Previous slide"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-5 w-5">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4 sm:h-5 sm:w-5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
         </svg>
       </button>
       <button
         onClick={goToNext}
-        className="absolute right-6 top-1/2 z-20 -translate-y-1/2 bg-white/80 p-3 hover:bg-white focus:outline-none transition-all duration-300"
+        className="absolute right-2 xs:right-4 sm:right-6 top-1/2 z-20 -translate-y-1/2 bg-white/80 p-2 sm:p-3 hover:bg-white focus:outline-none transition-all duration-300"
         aria-label="Next slide"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-5 w-5">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4 sm:h-5 sm:w-5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
       </button>
 
       {/* Indicators */}
-      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 space-x-3">
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 z-20 flex -translate-x-1/2 space-x-2 sm:space-x-3">
         {carouselImages.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
             className={`h-[2px] transition-all duration-300 ${
-              index === currentIndex ? 'bg-white w-12' : 'bg-white/50 w-6'
+              index === currentIndex ? 'bg-white w-8 sm:w-12' : 'bg-white/50 w-4 sm:w-6'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
