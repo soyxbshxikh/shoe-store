@@ -4,10 +4,18 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
+interface UserData {
+  email?: string;
+  name?: string;
+  phone?: string;
+  loginMethod?: string;
+  loginTime?: string;
+}
+
 export default function AccountPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [userData, setUserData] = useState<any>(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
     // Check authentication status

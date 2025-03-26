@@ -48,7 +48,7 @@ export default async function AboutPage() {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <p className="text-lg mb-4">
-              Founded in 2025, StepStyle emerged from a simple idea: everyone deserves quality footwear that doesn't compromise on style or comfort.
+              Founded in 2025, StepStyle emerged from a simple idea: everyone deserves quality footwear that doesn&apos;t compromise on style or comfort.
             </p>
             <p className="text-lg mb-4">
               What started as a small boutique has grown into a trusted footwear destination, offering a carefully curated selection of shoes for every occasion, from casual outings to formal events, athletic pursuits to outdoor adventures.

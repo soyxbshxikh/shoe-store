@@ -8,6 +8,12 @@ const notifyCartUpdated = () => {
   window.dispatchEvent(new Event('cartUpdated'));
 };
 
+interface CartItem extends Product {
+  selectedColor: string;
+  selectedSize: number;
+  quantity: number;
+}
+
 interface AddToCartButtonProps {
   product: Product;
   selectedColor?: string;
@@ -39,10 +45,10 @@ export default function AddToCartButton({
     setIsAdding(true);
     
     // Get existing cart
-    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]') as CartItem[];
     
     // Create cart item with selected options
-    const cartItem = {
+    const cartItem: CartItem = {
       ...product,
       selectedColor: selectedColor || product.colors[0] || '',
       selectedSize: selectedSize || product.sizes[0] || 0,
@@ -51,7 +57,7 @@ export default function AddToCartButton({
     
     // Check if product with same options is already in cart
     const existingProductIndex = cartItems.findIndex(
-      (item: any) => 
+      (item: CartItem) => 
         item.id === product.id && 
         item.selectedSize === cartItem.selectedSize
     );
