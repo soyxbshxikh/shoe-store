@@ -13,9 +13,6 @@ const nextConfig = {
     // Disable TypeScript type checking during builds
     ignoreBuildErrors: true,
     tsconfigPath: "tsconfig.json",
-  },
-  experimental: {
-    disableESLintPlugin: true
   }
 };
 
