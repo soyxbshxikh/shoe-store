@@ -108,24 +108,13 @@ export default function WishlistItems() {
       // Notify about cart update
       notifyCartUpdated();
       
-      // Optionally, show a success message
-      toast({
-        title: "Added to cart",
-        description: `${item.name} has been added to your cart`,
-        status: "success",
-        duration: 3000
-      });
+      // Show a success toast message
+      toast.success(`${item.name} has been added to your cart`);
       
       router.push('/cart');
     } catch (error) {
-      // Remove console.error for production
-      // console.error('Error adding to cart:', error);
-      toast({
-        title: "Couldn't add to cart",
-        description: "There was a problem adding this item to your cart",
-        status: "error",
-        duration: 3000
-      });
+      // Show an error toast message
+      toast.error("There was a problem adding this item to your cart");
     }
   };
 

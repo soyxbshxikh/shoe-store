@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import './globals.css';
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={`${inter.className} flex min-h-screen flex-col`}>
+        <Toaster position="top-center" />
         <Navbar />
         <main className="flex-grow pt-20">{children}</main>
         <Footer />
