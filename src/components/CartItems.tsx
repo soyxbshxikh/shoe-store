@@ -105,18 +105,23 @@ export default function CartItems() {
 
   // Get the correct image path based on product ID
   const getImagePath = (item: CartItem) => {
-    // Different product folders have different image formats
-    if (item.id === 1) {
-      return `${item.imagePath}/HomeProduct.jpeg`;
-    } else if (item.id >= 2 && item.id <= 9) {
-      return `${item.imagePath}/HomeProduct.webp`;
-    } else if (item.id === 16 || item.id === 19) {
-      return `${item.imagePath}/HomeProduct.jpeg`;
-    } else if (item.id === 17 || item.id === 20) {
-      return `${item.imagePath}/HomeProduct.png`;
-    } else {
-      return `${item.imagePath}/HomeProduct.jpg`;
-    }
+    // Define the mapping of product IDs to file formats
+    const productFormats: Record<number, string> = {
+      1: '.jpeg',
+      2: '.webp',
+      3: '.webp',
+      9: '.webp',
+      16: '.jpeg',
+      17: '.png',
+      18: '.jpg',
+      19: '.jpeg',
+      20: '.png',
+    };
+    
+    // Get the format for the current product or use default
+    const format = productFormats[item.id] || '.jpg';
+    
+    return `${item.imagePath}/HomeProduct${format}`;
   };
 
   const handleImageError = (imagePath: string) => {

@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { getProductById } from '@/lib/data';
 import ProductImages from '@/components/ProductImages';
 import ProductDetailActions from '@/components/ProductDetailActions';
+import fs from 'fs';
+import path from 'path';
 
 interface ProductDetailPageProps {
   params: {
@@ -35,50 +37,42 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   
   // Function to get appropriate image slides based on product ID
   const getProductImageSlides = (productId: number, imagePath: string) => {
-    // Default image extensions
-    let slide1Ext = '.webp';
-    let slide2Ext = '.webp';
-    let slide3Ext = '.webp';
-    let homeExt = '.webp';
+    // Define the mapping of product IDs to file formats
+    const productFormats: Record<number, { [key: string]: string }> = {
+      1: { home: '.jpeg', slide1: '.webp', slide2: '.webp', slide3: '.webp' },
+      2: { home: '.webp', slide1: '.webp', slide2: '.webp', slide3: '.jpg' },
+      3: { home: '.webp', slide1: '.webp', slide2: '.jpg', slide3: '.jpg' },
+      16: { home: '.jpeg', slide1: '.png', slide2: '.jpeg', slide3: '.jpeg' },
+      17: { home: '.png', slide1: '.png', slide2: '.png', slide3: '.png' },
+      18: { home: '.jpg', slide1: '.jpg', slide2: '.jpg', slide3: '.jpg' },
+      19: { home: '.jpeg', slide1: '.png', slide2: '.jpeg', slide3: '.jpeg', slide3NoHyphen: true },
+      20: { home: '.png', slide1: '.png', slide2: '.png', slide3: '.png' },
+    };
     
-    // Product-specific image extensions based on examining the folders
-    if (productId === 1) {
-      homeExt = '.jpeg';
-    } else if (productId === 2) {
-      slide3Ext = '.jpg';
-      homeExt = '.webp';
-    } else if (productId === 3) {
-      slide1Ext = '.webp';
-      slide2Ext = '.jpg';
-      slide3Ext = '.jpg';
-      homeExt = '.webp';
-    } else if (productId === 16) {
-      homeExt = '.jpeg';
-    } else if (productId === 19) {
-      // Special case for Product19 with inconsistent naming
-      slide1Ext = '.png';
-      slide2Ext = '.jpeg';
-      // Slide3 is missing the dash
-      homeExt = '.jpeg';
-    } else if (productId === 17 || productId === 20) {
-      homeExt = '.png';
-    }
+    // Fallback formats to try in order
+    const fallbackFormats = ['.webp', '.jpg', '.jpeg', '.png'];
     
-    // Special case for Product19 with inconsistent naming for Slide3
-    if (productId === 19) {
-      return [
-        `${imagePath}/Slide-1${slide1Ext}`,
-        `${imagePath}/Slide-2${slide2Ext}`,
-        `${imagePath}/Slide3${slide3Ext}`, // Note: no dash for Slide3
-        `${imagePath}/HomeProduct${homeExt}`,
-      ];
-    }
+    // Get the format for the current product or use default
+    const productFormat = productFormats[productId] || {
+      home: '.webp',
+      slide1: '.webp',
+      slide2: '.webp',
+      slide3: '.webp'
+    };
+    
+    // Create the image paths with correct extensions
+    const homeProductPath = `${imagePath}/HomeProduct${productFormat.home}`;
+    
+    // Handle special case for Slide3 with no hyphen (Product19)
+    const slide3Path = productFormat.slide3NoHyphen
+      ? `${imagePath}/Slide3${productFormat.slide3}`
+      : `${imagePath}/Slide-3${productFormat.slide3}`;
     
     return [
-      `${imagePath}/Slide-1${slide1Ext}`,
-      `${imagePath}/Slide-2${slide2Ext}`,
-      `${imagePath}/Slide-3${slide3Ext}`,
-      `${imagePath}/HomeProduct${homeExt}`,
+      `${imagePath}/Slide-1${productFormat.slide1}`,
+      `${imagePath}/Slide-2${productFormat.slide2}`,
+      slide3Path,
+      homeProductPath,
     ];
   };
   

@@ -14,18 +14,23 @@ export default function ProductCard({ product }: ProductCardProps) {
   
   // Function to get the correct image path based on product ID
   const getImagePath = () => {
-    // Try to determine correct extension based on product ID
-    if (product.id === 1) {
-      return `${product.imagePath}/HomeProduct.jpeg`;
-    } else if (product.id >= 2 && product.id <= 9) {
-      return `${product.imagePath}/HomeProduct.webp`;
-    } else if (product.id === 16 || product.id === 19) {
-      return `${product.imagePath}/HomeProduct.jpeg`;
-    } else if (product.id === 17 || product.id === 20) {
-      return `${product.imagePath}/HomeProduct.png`;
-    } else {
-      return `${product.imagePath}/HomeProduct.jpg`;
-    }
+    // Define the mapping of product IDs to file formats
+    const productFormats: Record<number, string> = {
+      1: '.jpeg',
+      2: '.webp',
+      3: '.webp',
+      9: '.webp',
+      16: '.jpeg',
+      17: '.png',
+      18: '.jpg',
+      19: '.jpeg',
+      20: '.png',
+    };
+    
+    // Get the format for the current product or use default
+    const format = productFormats[product.id] || '.jpg';
+    
+    return `${product.imagePath}/HomeProduct${format}`;
   };
 
   // Fallback image path if original fails

@@ -12,6 +12,8 @@ export default function ProductImages({ slides, productName }: ProductImagesProp
   const [currentImages, setCurrentImages] = useState<string[]>(slides);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
   const [activeImage, setActiveImage] = useState<number>(0);
+  
+  const FALLBACK_IMAGE = '/images/Empty-cart.jpg';
 
   useEffect(() => {
     // Update images when slides prop changes
@@ -22,50 +24,62 @@ export default function ProductImages({ slides, productName }: ProductImagesProp
 
   // Try alternative formats if an image fails to load
   const handleImageError = (imageSrc: string, index: number) => {
-    // If we've already tried to fix this image and it still failed
-    if (failedImages[imageSrc]) {
+    // Mark the current image as failed
+    setFailedImages(prev => ({ ...prev, [imageSrc]: true }));
+    
+    // Get product ID from the image path
+    const productIdMatch = imageSrc.match(/Product(\d+)/);
+    const productId = productIdMatch ? productIdMatch[1] : null;
+    
+    // If this is a home product image that failed or we can't determine the product ID, use global fallback
+    if (imageSrc.includes('HomeProduct') || !productId) {
+      const newImages = [...currentImages];
+      newImages[index] = FALLBACK_IMAGE;
+      setCurrentImages(newImages);
       return;
     }
-
-    // Extract base path and try different extensions
-    const pathWithoutExtension = imageSrc.replace(/\.(webp|jpg|jpeg|png)$/i, '');
     
-    // Try different extensions in sequence
-    const extensions = ['.webp', '.jpg', '.jpeg', '.png'];
-    const currentExtIndex = extensions.findIndex(ext => 
-      imageSrc.toLowerCase().endsWith(ext)
-    );
-    
-    // If current extension is found, try the next one in sequence
-    let nextExtIndex = -1;
-    if (currentExtIndex !== -1) {
-      nextExtIndex = (currentExtIndex + 1) % extensions.length;
-    } else {
-      // If extension not recognized, start with first one
-      nextExtIndex = 0;
+    // If this is a slide image, try to use the product's HomeProduct image as fallback
+    // Extract the image type (Slide-1, Slide-2, etc.)
+    const imageTypeMatch = imageSrc.match(/(Slide-\d|Slide\d)/);
+    if (!imageTypeMatch) {
+      // If we can't determine the image type, use global fallback
+      const newImages = [...currentImages];
+      newImages[index] = FALLBACK_IMAGE;
+      setCurrentImages(newImages);
+      return;
     }
     
-    const newSrc = `${pathWithoutExtension}${extensions[nextExtIndex]}`;
+    // Try all possible extensions for the home product image
+    const possibleHomeImages = [
+      `/images/Product${productId}/HomeProduct.jpeg`,
+      `/images/Product${productId}/HomeProduct.jpg`,
+      `/images/Product${productId}/HomeProduct.png`,
+      `/images/Product${productId}/HomeProduct.webp`,
+    ];
     
-    // If we've tried all extensions or can't determine the path, use fallback
-    if (imageSrc === newSrc || failedImages[newSrc]) {
-      // Fallback to product's home image or empty cart
-      const productId = imageSrc.match(/Product\d+/)?.[0];
-      const fallbackSrc = productId 
-        ? `/images/${productId}/HomeProduct.webp`
-        : '/images/Empty-cart.jpg';
-      
-      // Update the image source
+    // Find alternative slide images to try
+    const imageType = imageTypeMatch[1];
+    const basePath = `/images/Product${productId}/${imageType}`;
+    const extensions = ['.webp', '.jpg', '.jpeg', '.png'];
+    
+    // Create a queue of images to try
+    const imagesToTry = [
+      ...extensions.map(ext => `${basePath}${ext}`),
+      ...possibleHomeImages,
+      FALLBACK_IMAGE
+    ].filter(img => img !== imageSrc && !failedImages[img]);
+    
+    // If we have alternatives to try, use the first one
+    if (imagesToTry.length > 0) {
       const newImages = [...currentImages];
-      newImages[index] = fallbackSrc;
+      newImages[index] = imagesToTry[0];
       setCurrentImages(newImages);
-      setFailedImages(prev => ({ ...prev, [imageSrc]: true }));
     } else {
-      // Try new extension
+      // If all alternatives failed, use global fallback
       const newImages = [...currentImages];
-      newImages[index] = newSrc;
+      newImages[index] = FALLBACK_IMAGE;
       setCurrentImages(newImages);
-      setFailedImages(prev => ({ ...prev, [imageSrc]: true }));
     }
   };
 
@@ -75,7 +89,7 @@ export default function ProductImages({ slides, productName }: ProductImagesProp
       <div className="flex flex-row md:flex-col gap-3 p-3 md:mr-4 mb-2 md:mb-0 md:w-28">
         {currentImages.map((image, index) => (
           <div 
-            key={index} 
+            key={`${image}-${index}`} 
             className={`relative h-24 w-24 cursor-pointer overflow-hidden rounded-md border-2 ${
               activeImage === index ? 'border-black' : 'border-gray-200'
             } hover:border-gray-400 transition-all duration-200`}
