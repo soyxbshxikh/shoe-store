@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { CartItem } from '@/app/cart/page';
 
 // Helper function to trigger cart update notification
@@ -536,20 +537,6 @@ export default function CartItems() {
   const resetPaymentStatus = () => {
     setPaymentStatus('idle');
     setErrorMessage('');
-  };
-
-  // Handle card input changes
-  const handleCardInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setCardDetails(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
-    // Clear error messages when user starts typing
-    if (errorMessage) {
-      setErrorMessage('');
-    }
   };
 
   // Format card number with spaces

@@ -105,31 +105,29 @@ export default function SignupPage() {
     setIsLoading(true);
     setError('');
 
-    // Simulate API call to verify OTP and create account
-    setTimeout(() => {
-      // In a real app, call actual API to verify OTP and create account
-      setIsLoading(false);
+    try {
+      // For this demo, we'll simulate storing user data in localStorage
+      const existingUsersData = localStorage.getItem('users');
+      const existingUsers = existingUsersData ? JSON.parse(existingUsersData) : [];
       
-      // Store the user data for demonstration purposes
-      // In a real app, this would be handled by your backend
-      const userData = {
-        name,
-        email: identifierType === 'email' ? identifier : '',
-        phone: identifierType === 'phone' ? identifier : '',
-        registrationDate: new Date().toISOString()
-      };
+      // Add new user to the array
+      const userData = { email: identifier, name, password, loginMethod: 'password', loginTime: new Date().toISOString() };
+      const updatedUsers = [...existingUsers, userData];
       
-      // Store the registered users in local storage
-      const existingUsers = localStorage.getItem('registeredUsers');
-      let users = existingUsers ? JSON.parse(existingUsers) : [];
-      users.push(userData);
-      localStorage.setItem('registeredUsers', JSON.stringify(users));
+      // Store updated user list
+      localStorage.setItem('users', JSON.stringify(updatedUsers));
       
-      // Here, we're pretending any 6-digit OTP is valid for demo purposes
+      // Set auth status and store current user data
+      localStorage.setItem('isAuthenticated', 'true');
+      localStorage.setItem('authUser', JSON.stringify(userData));
       
       // Navigate to login page after successful signup
       router.push('/auth/login');
-    }, 1500);
+    } catch (error) {
+      console.error('Error during signup:', error);
+      setError("Couldn't complete registration. Please try again.");
+      setIsLoading(false);
+    }
   };
 
   return (

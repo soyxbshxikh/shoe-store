@@ -361,6 +361,14 @@ export default function LoginPage() {
             </Link>
           </p>
         </div>
+
+        {isLoading && (
+          <div className="p-4 mt-6 text-sm rounded-md bg-red-50 text-red-800 border border-red-200">
+            <p>
+              Login failed. Please check your credentials and try again. If you don&apos;t have an account, please sign up.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

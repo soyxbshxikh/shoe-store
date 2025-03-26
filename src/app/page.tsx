@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import ImageCarousel from '@/components/ImageCarousel';
 import { getProducts } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';

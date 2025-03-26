@@ -350,6 +350,12 @@ export default function ForgotPasswordPage() {
             </Link>
           </p>
         </div>
+
+        <div className="p-4 mt-6 text-sm rounded-md bg-blue-50 text-blue-800 border border-blue-200">
+          <p>
+            Please check your email for a password reset link. If you don&apos;t receive it within a few minutes, check your spam folder.
+          </p>
+        </div>
       </div>
     </div>
   );

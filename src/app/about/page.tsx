@@ -1,9 +1,9 @@
+import Image from 'next/image';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getProducts, getCategories } from '@/lib/data';
 import ClientImage from '@/components/ClientImage';
 import TeamMemberImage from '@/components/TeamMemberImage';
-import ProductImageCard from '@/components/ProductImageCard';
 
 export const metadata: Metadata = {
   title: 'About Us | StepStyle',
@@ -38,6 +38,7 @@ export default async function AboutPage() {
           priority
         />
         <div className="absolute inset-0 bg-black bg-opacity-20 flex flex-col items-center justify-center text-white p-8">
+          <p className="mt-1 max-w-2xl text-sm text-gray-500">Delivering quality footwear for every step of life&apos;s journey</p>
         </div>
       </div>
       
@@ -202,7 +203,7 @@ export default async function AboutPage() {
         <h2 className="text-3xl font-bold mb-6 text-center">Get In Touch</h2>
         <div className="max-w-lg mx-auto">
           <p className="text-center mb-8">
-            Have questions about our products or services? We'd love to hear from you.
+            Have questions about our products or services? We&apos;d love to hear from you.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="flex flex-col items-center">

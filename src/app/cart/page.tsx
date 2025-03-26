@@ -1,14 +1,12 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-// Use dynamic import with no SSR to ensure client-side rendering
+// Use dynamic import with no SSR for cart items 
 const CartItems = dynamic(() => import('@/components/CartItems'), { ssr: false });
 
 export const metadata: Metadata = {
-  title: 'Shopping Cart | StepStyle',
-  description: 'View and manage your shopping cart',
+  title: 'Your Cart | StepStyle',
+  description: 'View and manage your cart items',
 };
 
 export type CartItem = {
