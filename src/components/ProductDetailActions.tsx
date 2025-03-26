@@ -11,13 +11,9 @@ interface ProductDetailActionsProps {
 }
 
 export default function ProductDetailActions({ product }: ProductDetailActionsProps) {
-  // Keep the state for cart functionality but don't expose to UI
+  // Keep the state for cart functionality but set default color automatically
   const [selectedColor, setSelectedColor] = useState<string>(product.colors[0] || '');
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
-
-  const handleColorChange = (color: string) => {
-    setSelectedColor(color);
-  };
 
   const handleSizeChange = (size: number) => {
     setSelectedSize(size);
@@ -27,10 +23,9 @@ export default function ProductDetailActions({ product }: ProductDetailActionsPr
     <div className="space-y-6">
       {/* Product Options (Sizes only) */}
       <ProductOptions
-        colors={product.colors}
         sizes={product.sizes}
-        onColorChange={handleColorChange}
         onSizeChange={handleSizeChange}
+        selectedSize={selectedSize}
       />
       
       {/* Action Buttons */}

@@ -2,27 +2,17 @@
 
 interface ProductOptionsProps {
   sizes?: number[];
-  colors?: string[];
   onSizeChange: (size: number) => void;
-  onColorChange?: (color: string) => void;
   selectedSize?: number;
 }
 
 export default function ProductOptions({ 
   sizes = [], 
-  colors = [],
   onSizeChange,
-  onColorChange,
   selectedSize
 }: ProductOptionsProps) {
   const handleSizeSelect = (size: number) => {
     onSizeChange(size);
-  };
-
-  const handleColorSelect = (color: string) => {
-    if (onColorChange) {
-      onColorChange(color);
-    }
   };
 
   return (
@@ -43,27 +33,19 @@ export default function ProductOptions({
                 }`}
               >
                 {size}
+                {selectedSize === size && (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                )}
               </button>
             ))}
           </div>
-        </div>
-      )}
-
-      {colors.length > 0 && (
-        <div>
-          <h3 className="text-sm font-medium text-gray-900 mb-3">Color</h3>
-          <div className="flex space-x-2">
-            {colors.map((color) => (
-              <button
-                key={color}
-                type="button"
-                className={`relative h-8 w-8 rounded-full border border-gray-300`}
-                style={{ backgroundColor: color.toLowerCase() }}
-                aria-label={`Color: ${color}`}
-                onClick={() => handleColorSelect(color)}
-              />
-            ))}
-          </div>
+          {selectedSize && (
+            <p className="mt-2 text-sm text-green-600">
+              Size {selectedSize} selected
+            </p>
+          )}
         </div>
       )}
     </div>
