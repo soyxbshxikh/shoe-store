@@ -22,61 +22,52 @@ export default function ProductImages({ slides, productName }: ProductImagesProp
     setActiveImage(0);
   }, [slides]);
 
+  // Generate fallback paths for a given image path
+  const generateFallbackPaths = (imagePath: string): string[] => {
+    // Extract base path and product ID
+    const productMatch = imagePath.match(/\/images\/(Product\d+)\/([^.]+)/);
+    
+    if (!productMatch) return [FALLBACK_IMAGE];
+    
+    const [, productFolder, imageName] = productMatch;
+    const basePath = `/images/${productFolder}/${imageName}`;
+    
+    // Try all possible extensions for the image
+    return [
+      `${basePath}.webp`,
+      `${basePath}.jpg`, 
+      `${basePath}.jpeg`,
+      `${basePath}.png`,
+      // If it's a slide, try different naming patterns
+      imageName.includes('Slide') ? `/images/${productFolder}/HomeProduct.jpg` : null,
+      imageName.includes('Slide') ? `/images/${productFolder}/HomeProduct.webp` : null,
+      imageName.includes('Slide') ? `/images/${productFolder}/HomeProduct.jpeg` : null,
+      imageName.includes('Slide') ? `/images/${productFolder}/HomeProduct.png` : null,
+      // Final fallback
+      FALLBACK_IMAGE
+    ].filter(Boolean) as string[];
+  };
+
   // Try alternative formats if an image fails to load
   const handleImageError = (imageSrc: string, index: number) => {
     // Mark the current image as failed
     setFailedImages(prev => ({ ...prev, [imageSrc]: true }));
     
-    // Get product ID from the image path
-    const productIdMatch = imageSrc.match(/Product(\d+)/);
-    const productId = productIdMatch ? productIdMatch[1] : null;
+    // Get fallback paths for this image
+    const fallbackPaths = generateFallbackPaths(imageSrc);
     
-    // If this is a home product image that failed or we can't determine the product ID, use global fallback
-    if (imageSrc.includes('HomeProduct') || !productId) {
+    // Find the first fallback that hasn't failed yet
+    const availableFallback = fallbackPaths.find(path => 
+      path !== imageSrc && !failedImages[path]
+    );
+    
+    if (availableFallback) {
+      // Update the image source with the fallback
       const newImages = [...currentImages];
-      newImages[index] = FALLBACK_IMAGE;
-      setCurrentImages(newImages);
-      return;
-    }
-    
-    // If this is a slide image, try to use the product's HomeProduct image as fallback
-    // Extract the image type (Slide-1, Slide-2, etc.)
-    const imageTypeMatch = imageSrc.match(/(Slide-\d|Slide\d)/);
-    if (!imageTypeMatch) {
-      // If we can't determine the image type, use global fallback
-      const newImages = [...currentImages];
-      newImages[index] = FALLBACK_IMAGE;
-      setCurrentImages(newImages);
-      return;
-    }
-    
-    // Try all possible extensions for the home product image
-    const possibleHomeImages = [
-      `/images/Product${productId}/HomeProduct.jpeg`,
-      `/images/Product${productId}/HomeProduct.jpg`,
-      `/images/Product${productId}/HomeProduct.png`,
-      `/images/Product${productId}/HomeProduct.webp`,
-    ];
-    
-    // Find alternative slide images to try
-    const imageType = imageTypeMatch[1];
-    const basePath = `/images/Product${productId}/${imageType}`;
-    const extensions = ['.webp', '.jpg', '.jpeg', '.png'];
-    
-    // Create a queue of images to try
-    const imagesToTry = [
-      ...extensions.map(ext => `${basePath}${ext}`),
-      ...possibleHomeImages,
-      FALLBACK_IMAGE
-    ].filter(img => img !== imageSrc && !failedImages[img]);
-    
-    // If we have alternatives to try, use the first one
-    if (imagesToTry.length > 0) {
-      const newImages = [...currentImages];
-      newImages[index] = imagesToTry[0];
+      newImages[index] = availableFallback;
       setCurrentImages(newImages);
     } else {
-      // If all alternatives failed, use global fallback
+      // If all fallbacks have failed, use the global fallback
       const newImages = [...currentImages];
       newImages[index] = FALLBACK_IMAGE;
       setCurrentImages(newImages);
