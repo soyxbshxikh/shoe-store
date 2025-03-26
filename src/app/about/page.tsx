@@ -13,10 +13,6 @@ export const metadata: Metadata = {
 export default async function AboutPage() {
   // Get product categories to showcase the variety
   const categories = await getCategories();
-  // Create a new array with "Walking" recategorized as "Running"
-  const recategorizedCategories = categories.map(category => 
-    category === "Walking" ? "Running" : category
-  );
   // Get total product count
   const products = await getProducts();
   const productCount = products.length;
@@ -133,7 +129,7 @@ export default async function AboutPage() {
           
           <h3 className="text-xl font-semibold mb-4">Categories We Offer</h3>
           <div className="flex flex-wrap gap-2 mb-6">
-            {recategorizedCategories.map((category) => (
+            {categories.map((category) => (
               <Link href={`/products?category=${category}`} key={category}>
                 <span className="inline-block rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 transition-colors">
                   {category}
