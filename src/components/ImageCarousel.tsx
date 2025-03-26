@@ -83,10 +83,10 @@ export default function ImageCarousel({ images }: CarouselProps) {
         </div>
       ))}
 
-      {/* Navigation arrows */}
+      {/* Navigation arrows - hidden on small smartphones, visible on larger devices */}
       <button
         onClick={goToPrevious}
-        className="absolute left-2 xs:left-4 sm:left-6 top-1/2 z-20 -translate-y-1/2 bg-white/80 p-2 sm:p-3 hover:bg-white focus:outline-none transition-all duration-300"
+        className="hidden xs:block absolute left-2 xs:left-4 sm:left-6 top-1/2 z-20 -translate-y-1/2 bg-white/80 p-2 sm:p-3 hover:bg-white focus:outline-none transition-all duration-300"
         aria-label="Previous slide"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4 sm:h-5 sm:w-5">
@@ -95,7 +95,7 @@ export default function ImageCarousel({ images }: CarouselProps) {
       </button>
       <button
         onClick={goToNext}
-        className="absolute right-2 xs:right-4 sm:right-6 top-1/2 z-20 -translate-y-1/2 bg-white/80 p-2 sm:p-3 hover:bg-white focus:outline-none transition-all duration-300"
+        className="hidden xs:block absolute right-2 xs:right-4 sm:right-6 top-1/2 z-20 -translate-y-1/2 bg-white/80 p-2 sm:p-3 hover:bg-white focus:outline-none transition-all duration-300"
         aria-label="Next slide"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4 sm:h-5 sm:w-5">
