@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "name": "Air Max Comfort",
+    "description": "Experience unparalleled comfort with the Air Max Comfort. These stylish sneakers feature advanced cushioning technology, breathable mesh uppers, and a durable rubber outsole for excellent traction. Perfect for everyday wear or light workouts.",
+    "price": 12999,
+    "imagePath": "/images/Product1",
+    "category": "Running",
+    "inStock": true,
+    "colors": ["Black/White", "Blue/Gray", "Red/Black"],
+    "sizes": [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12]
+  },
+  {
+    "id": 2,
+    "name": "Classic Canvas Low-Tops",
+    "description": "Timeless canvas low-top sneakers that go with any outfit. Made with premium materials for comfort and durability, featuring reinforced stitching and cushioned insoles for all-day comfort.",
+    "price": 5999,
+    "imagePath": "/images/Product2",
+    "category": "Casual",
+    "inStock": true,
+    "colors": ["White", "Black", "Navy", "Red"],
+    "sizes": [6, 7, 8, 9, 10, 11, 12]
+  },
+  {
+    "id": 3,
+    "name": "Hiker Pro Boots",
+    "description": "Conquer any trail with the Hiker Pro Boots. These rugged hiking boots feature waterproof leather uppers, aggressive traction outsoles, and supportive ankle collars. The breathable membrane keeps your feet dry while allowing moisture to escape.",
+    "price": 14999,
+    "imagePath": "/images/Product3",
+    "category": "Hiking",
+    "inStock": true,
+    "colors": ["Brown/Black", "Gray/Orange"],
+    "sizes": [8, 9, 10, 11, 12]
+  },
+  {
+    "id": 4,
+    "name": "Sprint Elite Racing Flats",
+    "description": "Engineered for speed, the Sprint Elite Racing Flats are ultra-lightweight with a responsive midsole and strategically placed rubber on the outsole. These racing shoes help you shave seconds off your personal best in competitions.",
+    "price": 11999,
+    "imagePath": "/images/Product4",
+    "category": "Running",
+    "inStock": true,
+    "colors": ["Neon Yellow/Black", "Red/White", "Blue/Silver"],
+    "sizes": [7, 8, 9, 10, 11, 12]
+  },
+  {
+    "id": 5,
+    "name": "Urban Street High-Tops",
+    "description": "Make a statement with these stylish high-top sneakers. The Urban Street features premium leather uppers, padded collars for ankle support, and a cushioned footbed for comfort. The rubber outsole provides excellent grip on city streets.",
+    "price": 8999,
+    "imagePath": "/images/Product5",
+    "category": "Casual",
+    "inStock": true,
+    "colors": ["White/Black", "All Black", "Gray/White"],
+    "sizes": [7, 8, 9, 10, 11, 12]
+  },
+  {
+    "id": 6,
+    "name": "Court Master Tennis Shoes",
+    "description": "Dominate the tennis court with the Court Master shoes. Featuring a herringbone pattern outsole for multi-directional grip, reinforced toe area for durability, and cushioned midsole for impact protection during quick lateral movements.",
+    "price": 10999,
+    "imagePath": "/images/Product6",
+    "category": "Tennis",
+    "inStock": true,
+    "colors": ["White/Green", "White/Blue"],
+    "sizes": [7, 8, 9, 10, 11, 12]
+  },
+  {
+    "id": 7,
+    "name": "Trail Blazer Outdoor Shoes",
+    "description": "Versatile outdoor shoes that transition from trail to town with ease. The Trail Blazer features water-resistant uppers, grippy rubber outsoles, and protective toe caps. Cushioned midsoles provide all-day comfort on any terrain.",
+    "price": 9999,
+    "imagePath": "/images/Product7",
+    "category": "Outdoor",
+    "inStock": true,
+    "colors": ["Green/Brown", "Gray/Black"],
+    "sizes": [8, 9, 10, 11, 12]
+  },
+  {
+    "id": 8,
+    "name": "Flex Trainer Cross-Training Shoes",
+    "description": "Versatile training shoes for the gym, HIIT workouts, or light running. The Flex Trainer features a flexible outsole, breathable mesh upper, and supportive overlays for lateral stability during multi-directional movements.",
+    "price": 7999,
+    "imagePath": "/images/Product8",
+    "category": "Training",
+    "inStock": true,
+    "colors": ["Black/Red", "Blue/White", "Gray/Green"],
+    "sizes": [7, 8, 9, 10, 11, 12]
+  },
+  {
+    "id": 9,
+    "name": "Skate Pro Board Shoes",
+    "description": "Built for skateboarders, the Skate Pro features durable suede uppers, reinforced ollie areas, and sticky gum rubber outsoles for board feel and grip. Double-stitched high-wear areas ensure these shoes can handle daily skating abuse.",
+    "price": 7499,
+    "imagePath": "/images/Product9",
+    "category": "Skateboarding",
+    "inStock": true,
+    "colors": ["Black/White", "Navy/Gum", "Burgundy/White"],
+    "sizes": [7, 8, 9, 10, 11, 12, 13]
+  },
+  {
+    "id": 10,
+    "name": "Business Casual Loafers",
+    "description": "Elegant yet comfortable loafers perfect for the office or formal occasions. Crafted from premium leather with cushioned footbeds and flexible outsoles, these shoes provide sophistication without sacrificing comfort.",
+    "price": 12999,
+    "imagePath": "/images/Product10",
+    "category": "Formal",
+    "inStock": true,
+    "colors": ["Black", "Brown", "Tan"],
+    "sizes": [8, 9, 10, 11, 12]
+  },
+  {
+    "id": 11,
+    "name": "Winter Trek Snow Boots",
+    "description": "Conquer winter conditions with the insulated Winter Trek boots. Featuring 200g insulation, waterproof construction, and aggressive rubber outsoles with multi-directional lugs for traction on snow and ice.",
+    "price": 15999,
+    "imagePath": "/images/Product11",
+    "category": "Winter",
+    "inStock": true,
+    "colors": ["Black", "Brown"],
+    "sizes": [8, 9, 10, 11, 12]
+  },
+  {
+    "id": 12,
+    "name": "Aqua Grip Water Shoes",
+    "description": "Perfect for water activities, the Aqua Grip features quick-drying mesh uppers, drainage holes in the sole, and grippy rubber outsoles for traction on wet surfaces. Protect your feet while staying comfortable in and around water.",
+    "price": 4999,
+    "imagePath": "/images/Product12",
+    "category": "Water",
+    "inStock": true,
+    "colors": ["Black/Blue", "Gray/Yellow"],
+    "sizes": [7, 8, 9, 10, 11, 12]
+  },
+  {
+    "id": 13,
+    "name": "Ultra Boost Running Shoes",
+    "description": "Experience supreme energy return with Ultra Boost Running Shoes. Featuring responsive cushioning, breathable Primeknit upper, and Continental™ rubber outsole for superior traction in all weather conditions.",
+    "price": 13999,
+    "imagePath": "/images/Product13",
+    "category": "Running",
+    "inStock": true,
+    "colors": ["Core Black", "Cloud White", "Solar Red"],
+    "sizes": [7, 8, 9, 10, 11, 12]
+  },
+  {
+    "id": 14,
+    "name": "Basketball Pro Performance",
+    "description": "Dominate the court with these high-performance basketball shoes. Featuring ankle support technology, responsive cushioning, and multi-directional traction pattern for quick pivots and explosive movements.",
+    "price": 11999,
+    "imagePath": "/images/Product14",
+    "category": "Basketball",
+    "inStock": true,
+    "colors": ["Black/Gold", "White/Red", "Blue/Orange"],
+    "sizes": [8, 9, 10, 11, 12, 13]
+  },
+  {
+    "id": 15,
+    "name": "Retro Classics Sneakers",
+    "description": "Step back in time with these retro-inspired sneakers. Combining vintage design elements with modern comfort technology, these classic shoes offer both style and substance for everyday wear.",
+    "price": 8999,
+    "imagePath": "/images/Product15",
+    "category": "Casual",
+    "inStock": true,
+    "colors": ["White/Navy", "Gray/Green", "Beige/Brown"],
+    "sizes": [6, 7, 8, 9, 10, 11, 12]
+  },
+  {
+    "id": 16,
+    "name": "Performance Football Cleats",
+    "description": "Engineered for speed and control on the pitch. These lightweight football cleats feature strategically placed studs for optimal traction, synthetic upper for ball control, and ankle support for stability during quick direction changes.",
+    "price": 9999,
+    "imagePath": "/images/Product16",
+    "category": "Football",
+    "inStock": true,
+    "colors": ["Black/White", "Blue/Yellow", "Red/Black"],
+    "sizes": [7, 8, 9, 10, 11, 12]
+  },
+  {
+    "id": 17,
+    "name": "Golf Tour Pro Shoes",
+    "description": "Premium golf shoes designed for the serious player. Featuring waterproof leather, responsive cushioning, and advanced spike technology for maximum grip and stability throughout your swing.",
+    "price": 16999,
+    "imagePath": "/images/Product17",
+    "category": "Golf",
+    "inStock": true,
+    "colors": ["White/Green", "Black/Gray", "Brown/Tan"],
+    "sizes": [8, 9, 10, 11, 12]
+  },
+  {
+    "id": 18,
+    "name": "Daily Comfort Walking Shoes",
+    "description": "Designed for all-day comfort, these walking shoes feature memory foam insoles, breathable mesh uppers, and shock-absorbing outsoles. Perfect for those who are on their feet all day or enjoy long walks.",
+    "price": 7999,
+    "imagePath": "/images/Product18",
+    "category": "Walking",
+    "inStock": true,
+    "colors": ["Gray/Blue", "Black/Pink", "Navy/White"],
+    "sizes": [6, 7, 8, 9, 10, 11, 12]
+  },
+  {
+    "id": 19,
+    "name": "Mountain Trail Hiking Boots",
+    "description": "Tackle the toughest trails with confidence in these durable hiking boots. Featuring waterproof Gore-Tex membrane, Vibram outsoles for superior grip, and supportive midsoles to reduce fatigue on long hikes.",
+    "price": 14999,
+    "imagePath": "/images/Product19",
+    "category": "Hiking",
+    "inStock": true,
+    "colors": ["Brown/Orange", "Green/Black", "Gray/Blue"],
+    "sizes": [7, 8, 9, 10, 11, 12]
+  },
+  {
+    "id": 20,
+    "name": "Designer Suede Dress Shoes",
+    "description": "Elevate your formal attire with these premium suede dress shoes. Meticulously crafted with genuine suede uppers, leather linings, and hand-finished details for a sophisticated, elegant look for special occasions.",
+    "price": 18999,
+    "imagePath": "/images/Product20",
+    "category": "Formal",
+    "inStock": true,
+    "colors": ["Black", "Navy", "Burgundy"],
+    "sizes": [7, 8, 9, 10, 11, 12]
+  }
+] 
