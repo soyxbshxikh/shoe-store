@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { WishlistItem } from '@/app/wishlist/page';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-hot-toast';
 
 // Helper functions to trigger update notifications
 const notifyWishlistUpdated = () => {
@@ -17,6 +19,7 @@ const notifyCartUpdated = () => {
 export default function WishlistItems() {
   const [items, setItems] = useState<WishlistItem[]>([]);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
+  const router = useRouter();
 
   // Load wishlist items from localStorage when component mounts
   useEffect(() => {
@@ -28,7 +31,9 @@ export default function WishlistItems() {
           setItems(wishlistItems);
         }
       } catch (error) {
-        console.error('Error loading wishlist items:', error);
+        // Remove console.error for production
+        // console.error('Error loading wishlist items:', error);
+        setItems([]);
       }
     };
 
@@ -104,9 +109,23 @@ export default function WishlistItems() {
       notifyCartUpdated();
       
       // Optionally, show a success message
-      alert('Added to cart!');
+      toast({
+        title: "Added to cart",
+        description: `${item.name} has been added to your cart`,
+        status: "success",
+        duration: 3000
+      });
+      
+      router.push('/cart');
     } catch (error) {
-      console.error('Error adding to cart:', error);
+      // Remove console.error for production
+      // console.error('Error adding to cart:', error);
+      toast({
+        title: "Couldn't add to cart",
+        description: "There was a problem adding this item to your cart",
+        status: "error",
+        duration: 3000
+      });
     }
   };
 

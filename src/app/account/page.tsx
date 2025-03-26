@@ -34,7 +34,8 @@ export default function AccountPage() {
         const parsedData = JSON.parse(userDataString);
         setUserData(parsedData);
       } catch (error) {
-        console.error('Error parsing user data:', error);
+        // Remove console.error for production
+        // console.error('Error parsing user data:', error);
       }
     }
     

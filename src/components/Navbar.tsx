@@ -48,10 +48,11 @@ export default function Navbar() {
         const userDataString = localStorage.getItem('authUser');
         if (userDataString) {
           try {
-            const userData = JSON.parse(userDataString);
-            setAuthUser(userData);
+            const parsedData = JSON.parse(userDataString);
+            setAuthUser(parsedData);
           } catch (error) {
-            console.error('Error parsing auth user data:', error);
+            // Remove console.error for production
+            // console.error('Error parsing auth user data:', error);
           }
         }
       }

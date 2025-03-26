@@ -28,7 +28,8 @@ export async function getProducts(): Promise<Product[]> {
     productsCache = products;
     return products;
   } catch (error) {
-    console.error('Error loading products:', error);
+    // Remove console.error for production
+    // console.error('Error loading products:', error);
     // Return empty array in case of error
     return [];
   }

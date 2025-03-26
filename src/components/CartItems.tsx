@@ -53,20 +53,15 @@ export default function CartItems() {
   useEffect(() => {
     const loadCartItems = () => {
       try {
-        const cartData = localStorage.getItem('cartItems');
-        if (cartData) {
-          const cartItems = JSON.parse(cartData);
-          setItems(cartItems);
-          
-          // Calculate subtotal
-          const total = cartItems.reduce(
-            (sum: number, item: CartItem) => sum + item.price * item.quantity, 
-            0
-          );
-          setSubtotal(total);
+        const storedItems = localStorage.getItem('cartItems');
+        if (storedItems) {
+          const items = JSON.parse(storedItems);
+          setItems(items);
+          calculateTotals(items);
         }
       } catch (error) {
-        console.error('Error loading cart items:', error);
+        // Remove console.error for production
+        // console.error('Error loading cart items:', error);
       }
     };
 

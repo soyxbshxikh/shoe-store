@@ -61,7 +61,6 @@ export default function ForgotPasswordPage() {
       setCountdown(30); // 30 second countdown for resend
       // Generate a random 6-digit OTP
       const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-      console.log('Generated OTP:', generatedOtp); // For testing
     }, 1500);
   };
 
@@ -76,7 +75,6 @@ export default function ForgotPasswordPage() {
       setCountdown(30); // Reset countdown
       // Generate a new random 6-digit OTP
       const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-      console.log('New Generated OTP:', generatedOtp); // For testing
     }, 1500);
   };
 

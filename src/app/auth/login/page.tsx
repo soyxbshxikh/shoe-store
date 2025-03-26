@@ -50,9 +50,11 @@ export default function LoginPage() {
       setIsLoading(false);
       setOtpSent(true);
       setCountdown(30); // 30 second countdown for resend
-      // Generate a random 6-digit OTP
+      // Generate a random 6-digit OTP for testing
       const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-      console.log('Generated OTP:', generatedOtp); // For testing
+      // Remove console log for production
+      // console.log('Generated OTP:', generatedOtp); // For testing
+      setOtp(generatedOtp);
     }, 1500);
   };
 

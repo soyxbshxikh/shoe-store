@@ -77,7 +77,6 @@ export default function SignupPage() {
       setCountdown(30); // 30 second countdown for resend
       // Generate a random 6-digit OTP
       const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-      console.log('Generated OTP:', generatedOtp); // For testing
     }, 1500);
   };
 
@@ -92,7 +91,6 @@ export default function SignupPage() {
       setCountdown(30); // Reset countdown
       // Generate a new random 6-digit OTP
       const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-      console.log('New Generated OTP:', generatedOtp); // For testing
     }, 1500);
   };
 
@@ -124,9 +122,8 @@ export default function SignupPage() {
       // Navigate to login page after successful signup
       router.push('/auth/login');
     } catch (error) {
-      console.error('Error during signup:', error);
-      setError("Couldn't complete registration. Please try again.");
       setIsLoading(false);
+      setError('An error occurred during signup. Please try again.');
     }
   };
 
