@@ -52,10 +52,26 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       slide2Ext = '.jpg';
       slide3Ext = '.jpg';
       homeExt = '.webp';
-    } else if (productId === 16 || productId === 19) {
+    } else if (productId === 16) {
+      homeExt = '.jpeg';
+    } else if (productId === 19) {
+      // Special case for Product19 with inconsistent naming
+      slide1Ext = '.png';
+      slide2Ext = '.jpeg';
+      // Slide3 is missing the dash
       homeExt = '.jpeg';
     } else if (productId === 17 || productId === 20) {
       homeExt = '.png';
+    }
+    
+    // Special case for Product19 with inconsistent naming for Slide3
+    if (productId === 19) {
+      return [
+        `${imagePath}/Slide-1${slide1Ext}`,
+        `${imagePath}/Slide-2${slide2Ext}`,
+        `${imagePath}/Slide3${slide3Ext}`, // Note: no dash for Slide3
+        `${imagePath}/HomeProduct${homeExt}`,
+      ];
     }
     
     return [
