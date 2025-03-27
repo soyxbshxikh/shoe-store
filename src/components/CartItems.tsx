@@ -49,6 +49,15 @@ export default function CartItems() {
     };
   } | null>(null);
 
+  // Calculate subtotal from cart items
+  const calculateTotals = (cartItems: CartItem[]) => {
+    const total = cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity, 
+      0
+    );
+    setSubtotal(total);
+  };
+
   // Load cart items from localStorage when component mounts
   useEffect(() => {
     const loadCartItems = () => {
